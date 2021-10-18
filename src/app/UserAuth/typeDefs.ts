@@ -9,7 +9,7 @@ export default gql`
   }
 
   extend type User {
-    userAuth: UserAuth!
+    UserAuth: UserAuth!
   }
 
   extend type Query {

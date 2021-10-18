@@ -14,18 +14,18 @@
     "dev": "ts-node-dev --no-notify --respawn --transpile-only src/index"
   },
   "dependencies": {
-    "graphql-modules": "1.4.4",
     "@paljs/plugins": "4.0.8",
-    "@prisma/client": "3.2.1",
+    "@prisma/client": "^3.2.1",
     "apollo-server": "2.25.2",
     "graphql": "15.6.1",
+    "graphql-modules": "1.4.4",
     "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
-    "prisma": "3.2.1",
-    "@types/node": "14.17.27",
     "@paljs/cli": "4.0.12",
+    "@types/node": "14.17.27",
     "prettier": "2.4.1",
+    "prisma": "3.2.1",
     "ts-node": "9.1.1",
     "ts-node-dev": "1.1.8",
     "typescript": "4.4.4"
