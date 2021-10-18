@@ -1,5 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider          = "postgresql"
@@ -7,19 +8,29 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  published Boolean  @default(false)
-  createdAt DateTime @default(now())
+model Favorite {
+  id               Int   @id @default(autoincrement())
+  gitRepositoryIds Int[]
+  gitUserIds       Int[]
+  userId           Int   @unique
+  User             User  @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
+  id         Int       @id @default(autoincrement())
+  createdAt  String
+  updatedAt  String
+  email      String    @unique
+  name       String
+  userAuthId Int       @unique
+  UserAuth   UserAuth  @relation(fields: [userAuthId], references: [id])
+  Favorite   Favorite?
+}
+
+model UserAuth {
+  id        Int    @id @default(autoincrement())
+  createdAt String
+  updatedAt String
+  password  String
+  User      User?
 }
